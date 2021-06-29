@@ -114,6 +114,21 @@ if __name__ == "__main__":
 
     ####################################################################################
 
+    if user_inputs.command == 'SOI_chart':
+
+    from Functions.soi import soi_chart
+    import os
+
+    os.chdir(user_inputs.output_location)
+
+    soi_chart(
+        user_inputs.soi_file,
+        user_inputs.start_year,
+        user_inputs.end_year
+    )
+    
+    ####################################################################################
+    
     # if user_inputs.command == "SMERGE":
     #     from Functions.smerge import smerge
     #
