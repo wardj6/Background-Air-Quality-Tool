@@ -8,6 +8,8 @@ from PIL import Image
 from Functions.read_data import get_pollutant_dataframes
 from Functions.__pollutant_and_met_parameters__ import match_pollutant_to_column, all_pollutants_for_stats_charts, all_met_params_missing_data, bom_met_param_dict
 
+import mpl_styles
+plt.style.use('AECOM-standard')
 
 def concat_images(image_list) -> Image:
     """
@@ -127,7 +129,7 @@ def heat_map(
                         ax.axes.xaxis.set_ticks([])
                     ax.xaxis.set_major_formatter(mdates.DateFormatter('%b'))
                     x += 1
-                    ax.set_ylabel(str(year) + "       ", rotation=0, fontsize=10)
+                    ax.set_ylabel(str(year) + "\t          ", rotation=0, fontsize=10)
                 fig.suptitle(station_title + " " + pollutant_title)
                 y += 1
                 # plt.show()
@@ -147,8 +149,5 @@ def heat_map(
             print(f"\n********** OUTPUT ********** Missing data heat map/s generated for {station} and added to {output}\n")
         else:
             print(f"********** RUN INFO ********** No data available for {station} for any of the selected pollutants - missing data figures not generated")
-
-
-
 
 
