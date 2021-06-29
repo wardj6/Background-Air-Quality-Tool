@@ -199,6 +199,18 @@ def gui_inputs():
     temp_rain_charts_grp.add_argument("--rain_y_axis", metavar="Optional rainfall axis range", help="e.g. '0-400'", type=str)
 
     ###############################################################################################################################
+        
+    soi_graph = subs.add_parser('SOI_chart')
+
+    soi_graph_grp = soi_graph.add_argument_group("SOI Chart", gooey_options={"show_border": True, "columns": 2})
+    soi_graph_grp.add_argument('soi_file', metavar="SOI data file location", widget="FileChooser",
+                               default=r"\\auntl1fp001\Groups\!ENV\Team_AQ\Modelling\+Support_Data\+Models & Software\Air Quality Toolkit\Background_AQ_Data_Tool\soi_monthly.csv")
+    soi_graph_grp.add_argument('output_location', metavar='Output location', widget="DirChooser")
+    soi_graph_grp.add_argument('start_year', metavar='Start year', type=int, default=2010)
+    soi_graph_grp.add_argument('end_year', metavar='End year', type=int, default=2020)
+
+    ###############################################################################################################################
+
     # SMERGE is not currently implemented here
     # smerge = subs.add_parser('SMERGE')
     #
