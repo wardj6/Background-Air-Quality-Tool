@@ -11,8 +11,6 @@ if __name__ == "__main__":
     if user_inputs.command == "missing_data":
         from Functions.heat_map import heat_map
 
-        print("\n********** STARTING **********\n")
-
         heat_map(
             user_inputs.stations,
             user_inputs.output,
@@ -37,8 +35,6 @@ if __name__ == "__main__":
 
     if user_inputs.command == "background_data_stats":
         from Functions.background_data_stats import background_data_stats
-
-        print("\n********** STARTING **********\n")
 
         background_data_stats(
             user_inputs.stations,
@@ -68,8 +64,6 @@ if __name__ == "__main__":
 
     if user_inputs.command == "background_data_charts":
         from Functions.background_data_charts import background_data_charts
-
-        print("\n********** STARTING **********\n")
 
         background_data_charts(
             user_inputs.stations,
@@ -109,41 +103,36 @@ if __name__ == "__main__":
             x_format=user_inputs.x_format,
             comp_file=user_inputs.comp_csv,
             comp_label=user_inputs.comp_label,
-            comp_type=user_inputs.chart_type
+            comp_type=user_inputs.chart_type,
+            custom_colours=user_inputs.cust_cols
+        )
+
+    ####################################################################################
+
+    if user_inputs.command == 'temperature_rainfall_charts':
+
+        from Functions.temp_and_rain_charts import temp_and_rain_charts
+
+        temp_and_rain_charts(
+            user_inputs.stations,
+            user_inputs.output,
+            optional_temp_axis=user_inputs.temp_y_axis,
+            optional_rain_axis=user_inputs.rain_y_axis,
+            start=user_inputs.start_d,
+            end=user_inputs.end_d
         )
 
     ####################################################################################
 
     if user_inputs.command == 'SOI_chart':
 
-    from Functions.soi import soi_chart
-    import os
+        from Functions.soi import soi_chart
+        import os
 
-    os.chdir(user_inputs.output_location)
+        os.chdir(user_inputs.output_location)
 
-    soi_chart(
-        user_inputs.soi_file,
-        user_inputs.start_year,
-        user_inputs.end_year
-    )
-    
-    ####################################################################################
-    
-    # if user_inputs.command == "SMERGE":
-    #     from Functions.smerge import smerge
-    #
-    #     print("\n********** STARTING **********\n")
-    #
-    #     smerge(
-    #         user_inputs.stations,
-    #         user_inputs.output,
-    #         user_inputs.timezone,
-    #         start=user_inputs.start_date,
-    #         end=user_inputs.end_date,
-    #         autofill_wind=user_inputs.auto_fill_wind,
-    #         autofill_temp=user_inputs.auto_fill_temp,
-    #         autofill_rh=user_inputs.auto_fill_rh,
-    #         autofill_press=user_inputs.auto_fill_pressure,
-    #         max_concec=user_inputs.max_consecutive_values,
-    #         autofill_stations=user_inputs.stations_to_auto_fill
-    #     )
+        soi_chart(
+            user_inputs.soi_file,
+            user_inputs.start_year,
+            user_inputs.end_year
+        )
